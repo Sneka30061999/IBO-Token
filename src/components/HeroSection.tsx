@@ -94,8 +94,8 @@ export default function HeroSection() {
       <div className="hero-vl-bottom-fade" aria-hidden="true" />
 
       {/* ── Hero text content ── */}
-      <div className="container-x relative z-10 flex min-h-[88vh] flex-col
-                      justify-center py-20 sm:py-24 lg:py-28">
+      <div className="container-x relative z-10 flex min-h-[80vh] flex-col
+                      justify-center py-16 sm:py-20 lg:py-24">
 
         <div className="flex w-full max-w-[500px] flex-col items-start">
 

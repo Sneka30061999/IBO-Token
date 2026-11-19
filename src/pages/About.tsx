@@ -86,7 +86,7 @@ export default function About() {
           fits one viewport at 100% browser zoom, matching the
           visual appearance previously seen at 75% zoom.
           ═══════════════════════════════════════════════ */}
-      <section className="relative flex flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,#021a10_0%,#020d08_45%,#020504_80%)] py-8 sm:py-12 lg:min-h-[calc(100vh-4rem)]">
+      <section className="relative flex flex-col justify-center overflow-hidden bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,#021a10_0%,#020d08_45%,#020504_80%)] py-8 sm:py-10">
 
         {/* ── Top bar label — right side only ── */}
         <div className="container-x mb-6 flex animate-rise items-center justify-end text-[0.6rem] tracking-[0.16em] [animation-delay:.1s] sm:text-xs">
@@ -101,7 +101,7 @@ export default function About() {
             <p className="animate-rise mb-2 text-[0.6rem] font-semibold tracking-[0.18em] text-[#2EE5A8] [animation-delay:.6s] sm:text-xs">
               01 · VISION
             </p>
-            <h2 className="animate-rise font-grotesk text-xl font-bold leading-tight text-white [animation-delay:.8s] sm:text-2xl lg:text-3xl" style={{ marginBottom: '6px' }}>
+            <h2 className="animate-rise font-grotesk text-lg font-bold leading-tight text-white [animation-delay:.8s] sm:text-xl lg:text-2xl" style={{ marginBottom: '6px' }}>
               Our Vision
             </h2>
             <p className="animate-rise text-xs leading-relaxed text-[#D2CBF0] [animation-delay:1s] sm:text-sm" style={{ marginTop: 0 }}>
@@ -115,7 +115,7 @@ export default function About() {
           <div className="flex flex-col items-center gap-3">
 
             {/* Orbit rings + coin */}
-            <div className="relative h-[195px] w-[195px] sm:h-[225px] sm:w-[225px]">
+            <div className="relative h-[160px] w-[160px] sm:h-[190px] sm:w-[190px]">
 
               {/* Outer orbit ring */}
               <div className="absolute inset-0 animate-orbit">
@@ -243,7 +243,7 @@ export default function About() {
             <p className="animate-rise mb-2 text-[0.6rem] font-semibold tracking-[0.18em] text-[#2EE5A8] [animation-delay:1.2s] sm:text-xs">
               02 · RELATIONSHIP
             </p>
-            <h2 className="animate-rise font-grotesk text-xl font-bold leading-tight text-white [animation-delay:1.4s] sm:text-2xl lg:text-3xl" style={{ marginBottom: '6px' }}>
+            <h2 className="animate-rise font-grotesk text-lg font-bold leading-tight text-white [animation-delay:1.4s] sm:text-xl lg:text-2xl" style={{ marginBottom: '6px' }}>
               Relationship with ABT Working
             </h2>
             <p className="animate-rise text-xs leading-relaxed text-[#D2CBF0] [animation-delay:1.6s] sm:text-sm" style={{ marginTop: 0 }}>
@@ -259,7 +259,7 @@ export default function About() {
       {/* ═══════════════════════════════════════════════
           UTILITIES SECTION — spinning coins
           ═══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-[#020504] px-4 py-12 sm:px-8 sm:py-16 lg:px-12 xl:px-16">
+      <section className="relative overflow-hidden bg-[#020504] px-4 py-8 sm:px-6 sm:py-10 lg:px-10 xl:px-14">
 
         {/* Inject the coinSpin keyframe */}
         <style>{`@keyframes coinSpin{to{transform:rotateY(360deg)}}`}</style>
@@ -293,7 +293,7 @@ export default function About() {
                 <div
                   className={[
                     /* coin body */
-                    "relative grid size-[88px] place-items-center rounded-full",
+                    "relative grid size-[72px] place-items-center rounded-full",
                     "border-4 border-[#2EE5A8]/80",
                     "bg-[radial-gradient(circle_at_35%_30%,#adfde3,#2EE5A8_45%,#0d7a58)]",
                     /* 3D depth layers */

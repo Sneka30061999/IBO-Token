@@ -8,11 +8,11 @@ export function PageHeader({ eyebrow, title, subtitle, children }: { eyebrow: st
   return (
     <section className="relative overflow-hidden border-b border-white/5">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(40rem_16rem_at_50%_0%,rgba(46,229,168,0.14),transparent)]" />
-      <div className="container-x section relative text-center">
+      <div className="container-x py-8 sm:py-12 relative text-center">
         <p className="eyebrow animate-fadeUp">{eyebrow}</p>
-        <h1 className="h-display mt-3 animate-fadeUp text-4xl sm:text-5xl lg:text-6xl">{title}</h1>
-        {subtitle && <p className="mx-auto mt-4 max-w-2xl animate-fadeUp text-base text-slate-300 sm:text-lg">{subtitle}</p>}
-        {children && <div className="mt-8">{children}</div>}
+        <h1 className="h-display mt-3 animate-fadeUp text-3xl sm:text-4xl lg:text-5xl">{title}</h1>
+        {subtitle && <p className="mx-auto mt-3 max-w-2xl animate-fadeUp text-sm text-slate-300 sm:text-base">{subtitle}</p>}
+        {children && <div className="mt-6">{children}</div>}
       </div>
     </section>
   );

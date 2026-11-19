@@ -1,0 +1,29 @@
+{
+  "project_type": "Vite + React 18 + TypeScript SPA, Tailwind CSS v3, Three.js for 3-D scenes",
+  "language": "TypeScript/TSX",
+  "build_system": "Vite 5 — `npm run build` (tsc -b && vite build). Dev server: `npm run dev`.",
+  "test_framework": "None — no test runner configured. Verification is build + visual browser check.",
+  "build_command": "npm run build",
+  "test_command": "npm run build",
+  "verification_instructions": "1. Run `npm run build` — zero TS errors. 2. Run `npm run dev`, open browser at 100% zoom, check each route listed in the plan. 3. Resize to 375 px, 768 px, 1280 px and confirm no horizontal overflow.",
+  "snapshot_or_generated_files": null,
+  "environment_constraints": "Windows/PowerShell workspace. Project root is 'c:\\Users\\Dell\\Downloads\\ibo-website (1)\\ibo-website'. All commands must be run from that directory.",
+  "contribution_requirements": "No AGENTS.md found. Follow existing code style: Tailwind classes, inline React styles only where Tailwind cannot express the value, no new dependencies.",
+  "key_patterns": "Pages wrap content in <div className='page-scale-80'> to shrink font-size to match 80% browser zoom. The global html font-size staircase in index.css simulates 90% zoom. These two mechanisms are THE root cause of needing to zoom out. FaqScene3D uses '.faq-scene-root { font-size: 75% }' for the same reason on the FAQ page. CoinScene in BurnLiquidity has inline transform: scale(0.889) on its wrapper. All fixes: remove scaling, restore html font-size to 100%, adjust heading sizes to stay proportional.",
+  "relevant_files": [
+    "src/index.css",
+    "src/pages/BurnLiquidity.tsx",
+    "src/pages/Tokenomics.tsx",
+    "src/pages/Whitepaper.tsx",
+    "src/components/FaqScene3D.tsx",
+    "src/components/HeroSection.tsx",
+    "src/pages/Home.tsx",
+    "src/pages/About.tsx",
+    "src/components/Navbar.tsx",
+    "src/components/FanDeckCards.tsx",
+    "src/components/AllocationCards.tsx",
+    "src/components/Footer.tsx",
+    "tailwind.config.js"
+  ],
+  "directory_structure": "src/components/ — shared UI components (Navbar, Footer, HeroSection, FanDeckCards, FaqScene3D, etc.). src/pages/ — route-level page components (Home, About, BurnLiquidity, Tokenomics, Whitepaper, FAQ, Roadmap, Transactions). src/data/content.ts — static data. src/config/token.ts — token config. src/index.css — global styles including the zoom-simulation rules. tailwind.config.js — Tailwind theme extensions."
+}

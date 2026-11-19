@@ -21,7 +21,7 @@ export default function Tokenomics() {
       <TokenomicsSpiral />
 
       {/* Allocation breakdown cards */}
-      <section className="pb-10 sm:pb-14">
+      <section className="pb-8 sm:pb-10">
         <div className="container-x">
           <SectionTitle eyebrow="Breakdown" title="What each allocation is for" />
           <AllocationCards />

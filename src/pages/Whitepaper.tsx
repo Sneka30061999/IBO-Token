@@ -12,7 +12,7 @@ export default function Whitepaper() {
         subtitle="The official documentation covering IBO's purpose, tokenomics, burn programme and ecosystem." />
       <section className="section">
         <div className="container-x">
-          <div className="card grid items-center gap-8 !p-8 md:grid-cols-[240px_1fr]">
+          <div className="card grid items-center gap-6 !p-6 md:grid-cols-[200px_1fr]">
             <div className="mx-auto grid aspect-[3/4] w-48 place-items-center rounded-xl border border-white/15 bg-gradient-to-br from-[#020504] to-[#020504] p-4 shadow-glow md:w-full">
               <div className="text-center">
                 <LogoMark size={64} />

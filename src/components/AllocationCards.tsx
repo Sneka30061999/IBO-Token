@@ -34,7 +34,7 @@ export default function AllocationCards() {
     <>
       {/* ══ DESKTOP horizontal accordion (hidden on mobile) ══ */}
       <div
-        className="hidden md:flex gap-2 lg:gap-3 h-[380px] w-full"
+        className="hidden md:flex gap-2 lg:gap-3 h-[280px] xl:h-[310px] w-full"
         role="list"
       >
         {allocations.map((a, i) => {

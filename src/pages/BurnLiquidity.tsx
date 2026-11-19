@@ -65,9 +65,6 @@ const CSS = `
 @media (max-width: 639px) {
   .v3-floor, .v3-horizon { display: none !important; }
 }
-.bl-coin-scaler { zoom: 1; }
-@media (max-width: 1279px) { .bl-coin-scaler { zoom: 0.85; } }
-@media (max-width: 1023px) { .bl-coin-scaler { zoom: 0.72; } }
 `;
 
 /* ── CoinScene — pure CSS 3-D coin + flame + platform ── */
@@ -85,13 +82,40 @@ function CoinScene() {
 
   const rimCount = 48;
 
+  /* The scene is designed at 460×580px. We scale it to fit a max-width container. */
+  const SCENE_W = 460;
+  const SCENE_H = 580;
+  const MAX_W   = 340; /* container max-width in px */
+  const scale   = MAX_W / SCENE_W;
+
   return (
-    <div className="bl-coin-scaler w-full max-w-[460px] mx-auto overflow-hidden">
     <div
-      className="relative mx-auto select-none"
-      style={{ width: 460, height: 580, perspective: 1300, perspectiveOrigin: "50% 38%" }}
-      aria-hidden="true"
+      style={{
+        width: "100%",
+        maxWidth: MAX_W,
+        height: SCENE_H * scale,
+        margin: "0 auto",
+        overflow: "hidden",
+        position: "relative",
+      }}
     >
+      {/* Scale the fixed 460×580 scene proportionally */}
+      <div
+        style={{
+          width: SCENE_W,
+          height: SCENE_H,
+          transformOrigin: "top left",
+          transform: `scale(${scale})`,
+          position: "absolute",
+          top: 0,
+          left: 0,
+        }}
+      >
+        <div
+          className="relative select-none"
+          style={{ width: SCENE_W, height: SCENE_H, perspective: 1300, perspectiveOrigin: "50% 38%" }}
+          aria-hidden="true"
+        >
       {/* Background aura */}
       <div
         className="absolute rounded-full"
@@ -227,7 +251,8 @@ function CoinScene() {
       ].map((m, i) => (
         <div key={i} style={{ position: "absolute", left: m.left, top: m.top, width: m.size, height: m.size, borderRadius: "50%", background: "radial-gradient(circle at 30% 30%, #fff1b8, #e8a93c 45%, #8a520a)", border: "2px solid rgba(255,230,150,.85)", boxShadow: "0 0 16px rgba(255,160,50,.6), inset 0 0 0 3px rgba(130,75,10,.3)", animation: "bl-mini 6s ease-in-out infinite", animationDelay: m.dl }} />
       ))}
-    </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -362,7 +387,7 @@ export default function BurnLiquidity() {
           }}
         />
 
-        <div className="container-x py-10 sm:py-14">
+        <div className="container-x py-8 sm:py-10">
 
           {/* Supply mismatch warning */}
           {info.data?.supplyMismatch && (
@@ -375,7 +400,7 @@ export default function BurnLiquidity() {
           )}
 
           {/* Three-column hero grid */}
-          <div className="grid gap-8 lg:grid-cols-[1fr_minmax(0,460px)_1fr] lg:items-center lg:gap-6">
+          <div className="grid gap-6 lg:grid-cols-[1fr_340px_1fr] lg:items-center lg:gap-4">
 
             {/* ── Left — Annual burn info ── */}
             <div className="flex flex-col gap-5">
@@ -396,7 +421,7 @@ export default function BurnLiquidity() {
               {/* Heading */}
               <div>
                 <h1
-                  className="font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl"
+                  className="font-display text-3xl font-extrabold leading-none tracking-tight sm:text-4xl"
                   style={{ background: "linear-gradient(180deg, #fff, #a8f5df 65%, #2EE5A8)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}
                 >
                   Burn &<br />Liquidity
@@ -416,13 +441,13 @@ export default function BurnLiquidity() {
               {/* Big number */}
               <div className="flex items-baseline gap-3">
                 <span
-                  className="font-display text-4xl font-extrabold tabular-nums sm:text-5xl"
+                  className="font-display text-3xl font-extrabold tabular-nums sm:text-4xl"
                   style={{ background: "linear-gradient(180deg, #fff, #a8f5df 65%, #2EE5A8)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", filter: "drop-shadow(0 6px 18px rgba(46,229,168,.5))" }}
                 >
                   20,000,000
                 </span>
                 <span
-                  className="font-display text-2xl font-bold"
+                  className="font-display text-xl font-bold"
                   style={{ background: "linear-gradient(90deg, #2EE5A8, #1aad7e 55%, #2EE5A8)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}
                 >
                   IBO
@@ -483,7 +508,7 @@ export default function BurnLiquidity() {
       </section>
 
       {/* ── Transaction burn section ── */}
-      <section className="py-10 sm:py-14">
+      <section className="py-8 sm:py-10">
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-2">
 
@@ -499,10 +524,10 @@ export default function BurnLiquidity() {
             >
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#66ffd1]">Transaction-Based Burn</p>
               <h2
-                className="font-display text-3xl font-extrabold tabular-nums sm:text-4xl"
+                className="font-display text-2xl font-extrabold tabular-nums sm:text-3xl"
                 style={{ background: "linear-gradient(180deg, #fff, #c8f7ea 65%, #2EE5A8)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}
               >
-                3,000,000 <span className="text-2xl">IBO</span>
+                3,000,000 <span className="text-xl">IBO</span>
               </h2>
               <p className="text-sm leading-relaxed text-[#99ffe0]">
                 A separate allocation is reserved for token burns through applicable platform mechanisms.
@@ -530,10 +555,10 @@ export default function BurnLiquidity() {
             >
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#2EE5A8]">DEX Liquidity</p>
               <h2
-                className="font-display text-4xl font-extrabold tabular-nums"
+                className="font-display text-3xl font-extrabold tabular-nums"
                 style={{ background: "linear-gradient(90deg, #fff, #2EE5A8 60%, #2EE5A8)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}
               >
-                10,000,000 <span className="text-2xl">IBO</span>
+                10,000,000 <span className="text-xl">IBO</span>
               </h2>
               <p className="text-sm leading-relaxed text-sky-200">
                 Reserved for a future DEX launch and exchange liquidity initiatives to support trading and ecosystem growth.
@@ -556,7 +581,7 @@ export default function BurnLiquidity() {
 
       {/* ── Live statistics — Hologram Deck ── */}
       <section
-        className="relative overflow-hidden py-10 sm:py-14 px-4 sm:px-6"
+        className="relative overflow-hidden py-8 sm:py-10 px-4 sm:px-6"
         style={{background: "radial-gradient(1100px 520px at 50% 0%, #020504 0%, #020504 60%, #020504 100%)",}}
       >
         {/* Animated grid floor */}
@@ -594,7 +619,7 @@ export default function BurnLiquidity() {
               LIVE STATISTICS
             </p>
             <h2
-              className="font-display text-3xl font-extrabold text-white sm:text-4xl lg:text-5xl"
+              className="font-display text-2xl font-extrabold text-white sm:text-3xl lg:text-4xl"
             >
               Verified burn data
             </h2>
@@ -760,7 +785,7 @@ export default function BurnLiquidity() {
       </section>
 
       {/* ── DEX detailed card ── */}
-      <section className="pb-10 sm:pb-14">
+      <section className="pb-8 sm:pb-10">
         <div className="container-x">
           <SectionTitle eyebrow="DEX liquidity" title="Future exchange liquidity" />
           <LiquidityCard />

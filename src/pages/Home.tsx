@@ -1,4 +1,4 @@
-﻿import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ArrowRight, ExternalLink, Zap } from "lucide-react";
 import { SectionTitle, iconMap } from "../components/Bits";
 import HeroSection from "../components/HeroSection";
@@ -62,12 +62,12 @@ export default function Home() {
       </div>
 
       {/* Stats — fan deck */}
-      <section className="container-x pb-6 pt-10">
+      <section className="container-x pb-4 pt-8">
         <FanDeckCards />
       </section>
 
       {/* Token info panel — live on-chain data with supply mismatch detection */}
-      <section className="container-x pb-8">
+      <section className="container-x pb-6">
         <TokenInfoPanel />
       </section>
 
@@ -75,7 +75,7 @@ export default function Home() {
       <AboutCoinReveal />
 
       {/* Utilities — 3D flip cards */}
-      <section className="pb-10 sm:pb-14">
+      <section className="relative pt-16 pb-8 sm:pt-20 sm:pb-10 md:pt-24 lg:pt-28">
         <div className="container-x">
           <SectionTitle eyebrow="Utilities" title="What IBO powers" subtitle="Four core ways IBO supports the ecosystem." />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -100,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* Tokenomics preview — 3D Ziggurat allocation chart */}
-      <section className="section bg-[#020504]/50">
+      <section className="py-8 sm:py-10 bg-[#020504]/50">
         <div className="container-x">
           <SectionTitle
             eyebrow="Tokenomics"
@@ -117,7 +117,7 @@ export default function Home() {
       </section>
 
       {/* Burn mechanism — cyber glitch allocation cards */}
-      <section className="section">
+      <section className="py-8 sm:py-10">
         <div className="container-x">
           <SectionTitle
             eyebrow="Burn mechanism & allocations"
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Recent transactions */}
-      <section className="pb-10 sm:pb-14">
+      <section className="pb-8 sm:pb-10">
         <div className="container-x">
           <SectionTitle eyebrow="On-chain" title="Recent transactions" subtitle="The latest five IBO token transfers." />
           {txs.loading ? (
@@ -153,12 +153,12 @@ export default function Home() {
       </section>
 
       {/* Ecosystem — full-width banner card */}
-      <section className="pb-10 sm:pb-14">
+      <section className="pb-8 sm:pb-10">
         <div className="container-x">
           <AnimatedCard
             glowColor="rgba(46,229,168,0.2)"
             gradient="from-[#2EE5A8]/12 via-[#2EE5A8]/8 to-rose-500/12"
-            className="text-center !p-10 sm:!p-14"
+            className="text-center !p-8 sm:!p-10"
           >
             {/* Decorative orbs */}
             <div aria-hidden="true" className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-[#2EE5A8]/10 blur-3xl" />

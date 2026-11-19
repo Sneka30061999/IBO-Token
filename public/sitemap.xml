@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ibotoken.example/</loc></url>
+  <url><loc>https://ibotoken.example/about</loc></url>
+  <url><loc>https://ibotoken.example/tokenomics</loc></url>
+  <url><loc>https://ibotoken.example/burn-liquidity</loc></url>
+  <url><loc>https://ibotoken.example/transactions</loc></url>
+  <url><loc>https://ibotoken.example/roadmap</loc></url>
+  <url><loc>https://ibotoken.example/whitepaper</loc></url>
+  <url><loc>https://ibotoken.example/faq</loc></url>
+</urlset>
