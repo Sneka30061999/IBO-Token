@@ -65,6 +65,9 @@ const CSS = `
 @media (max-width: 639px) {
   .v3-floor, .v3-horizon { display: none !important; }
 }
+:root { --coin-scale: 1; }
+@media (max-width: 1279px) { :root { --coin-scale: 0.85; } }
+@media (max-width: 1023px) { :root { --coin-scale: 0.72; } }
 `;
 
 /* ── CoinScene — pure CSS 3-D coin + flame + platform ── */
@@ -83,6 +86,7 @@ function CoinScene() {
   const rimCount = 48;
 
   return (
+    <div className="w-full max-w-[460px] mx-auto overflow-hidden" style={{ transform: "scale(var(--coin-scale,1))", transformOrigin: "top center" }}>
     <div
       className="relative mx-auto select-none"
       style={{ width: 460, height: 580, perspective: 1300, perspectiveOrigin: "50% 38%" }}
@@ -224,6 +228,7 @@ function CoinScene() {
         <div key={i} style={{ position: "absolute", left: m.left, top: m.top, width: m.size, height: m.size, borderRadius: "50%", background: "radial-gradient(circle at 30% 30%, #fff1b8, #e8a93c 45%, #8a520a)", border: "2px solid rgba(255,230,150,.85)", boxShadow: "0 0 16px rgba(255,160,50,.6), inset 0 0 0 3px rgba(130,75,10,.3)", animation: "bl-mini 6s ease-in-out infinite", animationDelay: m.dl }} />
       ))}
     </div>
+    </div>
   );
 }
 
@@ -357,7 +362,7 @@ export default function BurnLiquidity() {
           }}
         />
 
-        <div className="container-x py-14 sm:py-20">
+        <div className="container-x py-10 sm:py-14">
 
           {/* Supply mismatch warning */}
           {info.data?.supplyMismatch && (
@@ -370,7 +375,7 @@ export default function BurnLiquidity() {
           )}
 
           {/* Three-column hero grid */}
-          <div className="grid gap-8 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-6">
+          <div className="grid gap-8 lg:grid-cols-[1fr_minmax(0,460px)_1fr] lg:items-center lg:gap-6">
 
             {/* ── Left — Annual burn info ── */}
             <div className="flex flex-col gap-5">
@@ -478,7 +483,7 @@ export default function BurnLiquidity() {
       </section>
 
       {/* ── Transaction burn section ── */}
-      <section className="py-14">
+      <section className="py-10 sm:py-14">
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-2">
 

@@ -95,7 +95,7 @@ export default function HeroSection() {
 
       {/* ── Hero text content ── */}
       <div className="container-x relative z-10 flex min-h-[88vh] flex-col
-                      justify-center py-24 sm:py-28 lg:py-32">
+                      justify-center py-20 sm:py-24 lg:py-28">
 
         <div className="flex w-full max-w-[500px] flex-col items-start">
 
