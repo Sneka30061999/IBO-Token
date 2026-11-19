@@ -1,0 +1,7 @@
+{
+  "verdict": "APPROVED",
+  "findings": [
+    "StatCard `sm:text-4xl` dropped — The value <p> class was changed from `text-3xl sm:text-4xl` to `text-3xl font-mono`, losing the responsive size step at ≥ 640 px. Any page using StatCard outside the hologram section will show slightly smaller values on tablet/desktop. Add `sm:text-4xl` back alongside `font-mono` if the responsive size is intentional elsewhere."
+  ],
+  "reviewDoc": "c:\\Users\\Dell\\Downloads\\ibo-website (1)\\ibo-website\\.agents\\tasks\\hologram-review.md"
+}

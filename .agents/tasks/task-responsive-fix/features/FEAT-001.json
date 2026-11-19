@@ -1,0 +1,25 @@
+{
+  "id": "FEAT-001",
+  "type": "fix",
+  "description": "Remove all zoom-simulation CSS from src/index.css. The file currently sets an html font-size staircase (81.25%→90%) to simulate 90% browser zoom site-wide, plus a .page-scale-80 class (88.9% font-size reduction used by BurnLiquidity, Tokenomics, Whitepaper) and a .faq-scene-root rule (75% font-size for the FAQ page). Removing all three restores the browser default 16px base so the site looks correct at 100% zoom. Also reduce .acr-heading clamp max from 68px to 52px to prevent the About page coin-reveal heading from becoming oversized at 16px base.",
+  "status": "completed",
+  "steps": [
+    "Open src/index.css. Find the html rule block (lines ~8-20). Replace the entire block — including its long comment about 90% zoom — with: `html { scroll-behavior: smooth; font-size: 100%; }`. Also remove the four @media lines that follow it (@media min-width 640px/1024px/1280px setting font-size on html).",
+    "In the same file, find and delete the .faq-scene-root block (3 lines: comment + rule setting font-size: 75%). This is located between the @media min-width 1280px html block and the .page-scale-80 block.",
+    "In the same file, find and delete the .page-scale-80 block and its three associated @media repeats (total ~9 lines including the comment above the class). These are located right after the .faq-scene-root deletion.",
+    "In the same file, find .acr-heading and change font-size from clamp(28px, 5.5vw, 68px) to clamp(24px, 4vw, 52px) to prevent the About coin-reveal heading from rendering too large at 16px base.",
+    "Run `npm run build` from the project root to confirm no TypeScript errors."
+  ],
+  "acceptance_criteria": [
+    "`npm run build` completes with zero errors.",
+    "src/index.css no longer contains any font-size rule on the html selector other than font-size: 100%.",
+    "src/index.css no longer contains the .page-scale-80 class definition.",
+    "src/index.css no longer contains the .faq-scene-root font-size rule.",
+    ".acr-heading font-size is clamp(24px, 4vw, 52px)."
+  ],
+  "verification": [
+    "cd 'c:\\Users\\Dell\\Downloads\\ibo-website (1)\\ibo-website' && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": "Build succeeded with exit code 0. tsc -b passed with zero TypeScript errors. Vite built 21 chunks in 9.71s. Pre-existing sRGBEncoding import warnings in VaultlineScene.tsx, RoadmapScene3D.tsx, FaqScene3D.tsx are unrelated to this change and do not affect the build result."
+}
