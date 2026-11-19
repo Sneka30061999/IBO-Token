@@ -1,0 +1,7 @@
+{
+  "task_id": "task-responsive-fix",
+  "task_description": "Fix the IBO website so every page renders correctly at 100% browser zoom on mobile (≤768px), tablet (769–1024px), and desktop (≥1025px). Currently requires zoom-out of 75–90% to look correct. Root cause: a font-size staircase on html in index.css plus per-page font-size class overrides that together simulate zoom-out.",
+  "status": "completed",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}
