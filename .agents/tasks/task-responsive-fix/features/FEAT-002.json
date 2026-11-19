@@ -1,0 +1,32 @@
+{
+  "id": "FEAT-002",
+  "type": "fix",
+  "description": "Remove all per-page zoom-simulation wrappers and inline scale transforms from the TSX files. Depends on FEAT-001 (the CSS rules are removed there; this removes their usage sites and tunes heading sizes). Files affected: src/pages/BurnLiquidity.tsx (remove page-scale-80 div wrapper and CoinScene's inline scale(0.889) transform, reduce hero heading sizes), src/pages/Tokenomics.tsx (remove page-scale-80 div wrapper), src/pages/Whitepaper.tsx (remove page-scale-80 div wrapper), src/components/FaqScene3D.tsx (remove faq-scene-root class from section), src/components/HeroSection.tsx (add w-full to hero content div for mobile safety).",
+  "status": "completed",
+  "steps": [
+    "Open src/pages/BurnLiquidity.tsx. Find the page root element `<div className=\"page-scale-80\">` (around line 336) and change it to `<div>` (remove the className entirely, since the div has no other classes).",
+    "In src/pages/BurnLiquidity.tsx, find the CoinScene function's return div. It has inline style with `transform: \"scale(0.889)\"` and `transformOrigin: \"top center\"`. Remove both of those two properties from the style object. The remaining style should be: `{ width: 460, height: 580, perspective: 1300, perspectiveOrigin: \"50% 38%\" }`.",
+    "In src/pages/BurnLiquidity.tsx, find the hero h1 heading in the left column (class `font-display text-5xl font-extrabold leading-none tracking-tight sm:text-6xl`) and change to `font-display text-4xl font-extrabold leading-none tracking-tight sm:text-5xl`.",
+    "In src/pages/BurnLiquidity.tsx, find the big-number span (class `font-display text-5xl font-extrabold tabular-nums sm:text-6xl`) and change to `font-display text-4xl font-extrabold tabular-nums sm:text-5xl`.",
+    "In src/pages/BurnLiquidity.tsx, find the transaction burn section h2 (class `font-display text-4xl font-extrabold tabular-nums`) and change to `font-display text-3xl font-extrabold tabular-nums sm:text-4xl`.",
+    "Open src/pages/Tokenomics.tsx. Find `<div className=\"page-scale-80\">` and change to `<div>`.",
+    "Open src/pages/Whitepaper.tsx. Find `<div className=\"page-scale-80\">` and change to `<div>`.",
+    "Open src/components/FaqScene3D.tsx. Find the section element with className containing `faq-scene-root` and remove only the `faq-scene-root` token from the className string. The section should still keep all other classes: `relative h-screen w-full overflow-x-hidden overflow-y-auto bg-[#020504] font-sans text-white`.",
+    "Open src/components/HeroSection.tsx. Find `<div className=\"flex max-w-[500px] flex-col items-start\">` and add `w-full` so it becomes `<div className=\"flex w-full max-w-[500px] flex-col items-start\">`.",
+    "Run `npm run build` from the project root to confirm zero TypeScript errors."
+  ],
+  "acceptance_criteria": [
+    "`npm run build` completes with zero errors.",
+    "src/pages/BurnLiquidity.tsx root div has no page-scale-80 class.",
+    "CoinScene wrapper div in BurnLiquidity.tsx has no transform or transformOrigin in its style prop.",
+    "src/pages/Tokenomics.tsx root div has no page-scale-80 class.",
+    "src/pages/Whitepaper.tsx root div has no page-scale-80 class.",
+    "src/components/FaqScene3D.tsx section element does not contain faq-scene-root in its className.",
+    "src/components/HeroSection.tsx hero content div includes w-full in its className."
+  ],
+  "verification": [
+    "cd 'c:\\Users\\Dell\\Downloads\\ibo-website (1)\\ibo-website' && npm run build"
+  ],
+  "blocked_reason": null,
+  "findings": "Build completed successfully: `tsc -b` zero TypeScript errors. Vite built 21 chunks in 9.59s. Pre-existing bundle warnings for sRGBEncoding (VaultlineScene, RoadmapScene3D, FaqScene3D) and missing Three.js post-processing exports (EffectComposer, RenderPass, UnrealBloomPass) — all pre-existing, not introduced by this change."
+}
