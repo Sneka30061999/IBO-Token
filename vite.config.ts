@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  base: '/IBO-Token/',
   build: {
     chunkSizeWarningLimit: 700,
     rollupOptions: {
