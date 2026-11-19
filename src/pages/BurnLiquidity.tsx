@@ -65,9 +65,9 @@ const CSS = `
 @media (max-width: 639px) {
   .v3-floor, .v3-horizon { display: none !important; }
 }
-:root { --coin-scale: 1; }
-@media (max-width: 1279px) { :root { --coin-scale: 0.85; } }
-@media (max-width: 1023px) { :root { --coin-scale: 0.72; } }
+.bl-coin-scaler { zoom: 1; }
+@media (max-width: 1279px) { .bl-coin-scaler { zoom: 0.85; } }
+@media (max-width: 1023px) { .bl-coin-scaler { zoom: 0.72; } }
 `;
 
 /* ── CoinScene — pure CSS 3-D coin + flame + platform ── */
@@ -86,7 +86,7 @@ function CoinScene() {
   const rimCount = 48;
 
   return (
-    <div className="w-full max-w-[460px] mx-auto overflow-hidden" style={{ transform: "scale(var(--coin-scale,1))", transformOrigin: "top center" }}>
+    <div className="bl-coin-scaler w-full max-w-[460px] mx-auto overflow-hidden">
     <div
       className="relative mx-auto select-none"
       style={{ width: 460, height: 580, perspective: 1300, perspectiveOrigin: "50% 38%" }}
@@ -556,7 +556,7 @@ export default function BurnLiquidity() {
 
       {/* ── Live statistics — Hologram Deck ── */}
       <section
-        className="relative overflow-hidden py-14 px-4 sm:px-6"
+        className="relative overflow-hidden py-10 sm:py-14 px-4 sm:px-6"
         style={{background: "radial-gradient(1100px 520px at 50% 0%, #020504 0%, #020504 60%, #020504 100%)",}}
       >
         {/* Animated grid floor */}
@@ -760,7 +760,7 @@ export default function BurnLiquidity() {
       </section>
 
       {/* ── DEX detailed card ── */}
-      <section className="pb-16">
+      <section className="pb-10 sm:pb-14">
         <div className="container-x">
           <SectionTitle eyebrow="DEX liquidity" title="Future exchange liquidity" />
           <LiquidityCard />
